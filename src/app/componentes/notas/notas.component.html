@@ -1,0 +1,45 @@
+<br>
+<br>
+<div class="container">
+  <form [formGroup]="logFrml" (ngSubmit)="enviar(logFrml.value)">
+    <div class="form-row" class="padre">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Título</span>
+        </div>
+        <input formControlName="titulo" type="text" class="form-control" placeholder="Título de la nota" required>
+      </div>
+    </div>
+
+    
+    <br>
+    <div class="form-row" class="padre">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Descripción</span>
+        </div>
+        <textarea formControlName="descripcion"class="form-control" placeholder="Agregar descripción de la nota" rows="3"></textarea>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Guardar</button>
+  </form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div>
+<footer class="hijo">
+  <h5>Ariana Yaneli López Ortiz</h5>
+  <h5>Desarrollo de Aplicaciones Web</h5>
+  <h5>ITIC. Iván Eduardo García Quintero</h5>
+</footer>
+<br>
+</div>
+
