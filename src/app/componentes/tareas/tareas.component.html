@@ -1,59 +1,37 @@
 <br>
 <div class="container">
-<form>
+<form [formGroup]="tarFrml" (ngSubmit)="enviar(tarFrml.value)">
 <div class="form-row" class="padre">
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="Descripción de la tarea" required>
+        <input formControlName="tarea" type="text" class="form-control" placeholder="Descripción de la tarea" required>
         <div class="input-group-append"> 
-            <button type="submit" class="btn btn-primary">Guardar</button>
-        </div> 
+            <button type="submit" [disabled]="tarFrml.invalid" class="btn btn-primary">Guardar</button>
+        </div>
+        <div class="not" *ngIf="tarFrml.get('tarea').hasError('required') && tarFrml.get('tarea').touched">
+          ¡Este campo es requerido, introduzca la Descripción!</div> 
     </div>
   </div>
   <br>
-  <button type="submit" class="btn btn-danger">Eliminar todo</button>
-
-
+  <button *ngIf="tareasArr.length>0" type="submit" class="btn btn-danger" (click)="Eliminar()">Eliminar todo</button>
   <br>
   <br>
   <br>
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <div class="input-group-text">
-        <input type="checkbox" aria-label="Checkbox for following text input">
-      </div>
-    </div>
-    <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Lavar ropa" disabled>
-  </div>
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <div class="input-group-text">
-        <input type="checkbox" aria-label="Checkbox for following text input">
-      </div>
+  <div *ngFor="let tareasn of tareasArr" class="container">
+    <app-enlistar-tareas [listarTareas]="[tareasn]"></app-enlistar-tareas>
     </div>
-    <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Comprar ropa" disabled>
-  </div>
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <div class="input-group-text">
-        <input type="checkbox" aria-label="Checkbox for following text input">
-      </div>
-    </div>
-    <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Pagar servicios" disabled>
-  </div>
-
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <div class="input-group-text">
-        <input type="checkbox" aria-label="Checkbox for following text input">
-      </div>
-    </div>
-    <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Tareas" disabled>
-  </div>
 
   </form>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <div>
@@ -62,6 +40,8 @@
   <h5>Desarrollo de Aplicaciones Web</h5>
   <h5>ITIC. Iván Eduardo García Quintero</h5>
 </footer>
+<br>
+<br>
 <br>
 <br>
 </div>

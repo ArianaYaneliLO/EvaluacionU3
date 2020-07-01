@@ -1,19 +1,17 @@
 <br>
 <br>
 <div class="container">
-  <form [formGroup]="logFrml" (ngSubmit)="enviar(logFrml.value)">
+  <form [formGroup]="notFrml" (ngSubmit)="enviar(notFrml.value)">
     <div class="form-row" class="padre">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">Título</span>
         </div>
         <input formControlName="titulo" type="text" class="form-control" placeholder="Título de la nota" required>
-        <div class="not" *ngIf="logFrml.get('titulo').hasError('required') && logFrml.get('titulo').touched">
+        <div class="not" *ngIf="notFrml.get('titulo').hasError('required') && notFrml.get('titulo').touched">
           ¡Este campo es requerido, introduzca el titulo!</div>
       </div>
-    </div>
-
-    
+    </div>  
     <br>
     <div class="form-row" class="padre">
       <div class="input-group">
@@ -21,35 +19,23 @@
           <span class="input-group-text">Descripción</span>
         </div>
         <textarea formControlName="descripcion"class="form-control" placeholder="Agregar descripción de la nota" rows="3"></textarea>
-        <div class="not" *ngIf="logFrml.get('descripcion').hasError('required') && logFrml.get('descripcion').touched">
+        <div class="not" *ngIf="notFrml.get('descripcion').hasError('required') && notFrml.get('descripcion').touched">
           ¡Este campo es requerido, introduzca la descripción!</div>
       </div>
     </div>
     <br>
-    <button [disabled]="logFrml.invalid" class="btn btn-primary" type="submit">Guardar</button>
+    <button [disabled]="notFrml.invalid" class="btn btn-primary" type="submit">Guardar</button>
   </form>
 </div>
-
 <br>  
-
-<div class="card border-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Fecha</div>
+<div class="container" *ngIf="datos.length>0">
+<div class="card border-primary mb-3" style="width: 18rem;" *ngFor="let item of datos">
+  <div style="color: black;" class="card-header fecha">{{fecha| date:"dd-MM-yy"}}</div>
   <div class="card-body text-primary">
-    <h5 class="card-title">Primary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title titulo">{{item.titulo}}</h5>
+    <p class="card-text descripcion">{{item.descripcion}}</p>
   </div>
 </div>
-
-<div class="container" *ngIf="datos.length>0">
-  <br>
-  <div class="card" style="width: 18rem;" *ngFor="let item of datos">
-      <div class="card-body">
-        <h5 class="card-title">Nombre: {{item.nombre}}</h5>
-        <p class="card-text">ID: {{item.descripcion}} </p>
-        <p class="card-text">Sexo: {{item.sexo}} </p>
-        <p class="card-text">Año de nacimiento: {{item.bd}}</p>
-      </div>
-    </div>
 </div>
 <br>
 <br>
