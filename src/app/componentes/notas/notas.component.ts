@@ -7,6 +7,8 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
   styleUrls: ['./notas.component.css']
 })
 export class NotasComponent implements OnInit {
+  datos: Array<string> = [];
+
   constructor(private _builder: FormBuilder) { 
     this.logFrml=this._builder.group({
       titulo: ['', Validators.required],
@@ -18,6 +20,12 @@ export class NotasComponent implements OnInit {
   logFrml: FormGroup
 
   ngOnInit(): void {
+  }
+
+  enviar(values){
+    this.datos.push(values);
+    this.logFrml.reset();
+    console.log(this.datos);
   }
 
 }
