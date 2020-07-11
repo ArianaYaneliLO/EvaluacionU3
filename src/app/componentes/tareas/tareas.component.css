@@ -15,3 +15,6 @@
   .not{
     color: red;
 }
+.sub{
+  text-decoration: line-through;
+}
